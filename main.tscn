@@ -1,9 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://kc3lwodn78d0"]
+[gd_scene load_steps=4 format=3 uid="uid://kc3lwodn78d0"]
 
 [ext_resource type="PackedScene" uid="uid://bha7ghs4coqms" path="res://scene/menu.tscn" id="1_7h0w0"]
+[ext_resource type="Texture2D" uid="uid://5x12bdvtbofe" path="res://assets/background/yellow.png" id="1_hdwqh"]
 [ext_resource type="PackedScene" uid="uid://wqsqmab7belf" path="res://scene/game.tscn" id="2_5wlhu"]
 
 [node name="Main" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hdwqh")
+stretch_mode = 1
 
 [node name="Menu" parent="." instance=ExtResource("1_7h0w0")]
 
