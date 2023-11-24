@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfdf4w0cmwcrh"]
+
+[ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_6uh52"]
+[ext_resource type="Texture2D" uid="uid://bypsqri0dhdj6" path="res://assets/buttons/icons/User.png" id="1_av26o"]
+[ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="1_gikoq"]
+[ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="1_ihbox"]
+[ext_resource type="Theme" uid="uid://plpu3ajx1xsc" path="res://themes/input/text_input.tres" id="3_tcavo"]
+[ext_resource type="Texture2D" uid="uid://b2114i5v73uvc" path="res://assets/buttons/icons/Back.png" id="5_23s6k"]
+[ext_resource type="Texture2D" uid="uid://df1rpu70h11d6" path="res://assets/buttons/icons/Play.png" id="6_23hia"]
+
+[node name="new_game_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6uh52")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -90.0
+offset_right = 89.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TitleBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_gikoq")
+text = "NEW USER"
+
+[node name="UserName" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/UserName"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_av26o")
+stretch_mode = 5
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/UserName"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_tcavo")
+placeholder_text = "USERNAME"
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("1_ihbox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -14.5
+offset_right = 38.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Back/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_23s6k")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Back/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "BACK"
+
+[node name="Confirm" type="Button" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("1_ihbox")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -14.5
+offset_right = 38.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_23hia")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "CREATE"

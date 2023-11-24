@@ -23,6 +23,7 @@ SaveFile="*res://scripts/save_file.gd"
 
 window/size/viewport_width=360
 window/size/viewport_height=640
+window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [rendering]

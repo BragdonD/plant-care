@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cil3df024hj07"]
+
+[ext_resource type="Script" path="res://scene/menu/menu.gd" id="1_ln00k"]
+[ext_resource type="PackedScene" uid="uid://bha7ghs4coqms" path="res://scene/menu/start_menu/start_menu.tscn" id="2_btk15"]
+[ext_resource type="PackedScene" uid="uid://bfdf4w0cmwcrh" path="res://scene/menu/new_game_menu/new_game_menu.tscn" id="3_ny2pj"]
+[ext_resource type="AudioStream" uid="uid://cjdwqwfo4xotv" path="res://assets/musics/floral_lofi_beat.mp3" id="6_pygqm"]
+
+[node name="menu" type="Node"]
+script = ExtResource("1_ln00k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_pygqm")
+
+[node name="start_menu" parent="." instance=ExtResource("2_btk15")]
+
+[node name="new_game_menu" parent="." instance=ExtResource("3_ny2pj")]
