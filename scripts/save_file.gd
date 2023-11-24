@@ -12,12 +12,12 @@ var files_metadata: Dictionary = {
 func _ready():
 	load_all_games()
 
-func create_new_game():
+func create_new_game(username: String):
 	var file_name = generate_random_name()
 	while FileAccess.file_exists(file_name):
 		file_name = generate_random_name()
 		
-	var new_game_save = GameSave.new(file_name, "default_username", "default_last_see")
+	var new_game_save = GameSave.new(file_name, username, Time.get_datetime_string_from_system(true))
 	
 	# Add the new GameSave to files_metadata
 	files_metadata["files"].append({
@@ -34,6 +34,7 @@ func load_all_games():
 	else:
 		var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
 		files_metadata = file.get_var(true)
+		print_debug(files_metadata)
 		file.close()
 
 func generate_random_name():

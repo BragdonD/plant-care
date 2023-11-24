@@ -80,6 +80,13 @@ size_flags_vertical = 4
 theme = ExtResource("3_tcavo")
 placeholder_text = "USERNAME"
 
+[node name="Error" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "*Need a username"
+
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
