@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scene/menu/new_game_menu/new_game_menu.gd" id="1_00ydc"]
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_6uh52"]
-[ext_resource type="Texture2D" uid="uid://bypsqri0dhdj6" path="res://assets/buttons/icons/User.png" id="1_av26o"]
+[ext_resource type="Texture2D" uid="uid://dfs1egboc4eyk" path="res://assets/buttons/icons/User.png" id="1_av26o"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="1_gikoq"]
 [ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="1_ihbox"]
 [ext_resource type="Theme" uid="uid://plpu3ajx1xsc" path="res://themes/input/text_input.tres" id="3_tcavo"]
@@ -64,10 +64,12 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/UserName"]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("1_av26o")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/UserName"]
