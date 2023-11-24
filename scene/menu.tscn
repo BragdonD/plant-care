@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bha7ghs4coqms"]
+[gd_scene load_steps=6 format=3 uid="uid://bha7ghs4coqms"]
 
 [ext_resource type="Script" path="res://scene/Menu.gd" id="1_p6k1e"]
 [ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="2_4u66g"]
+[ext_resource type="Texture2D" uid="uid://cesu14gh4psl3" path="res://assets/buttons/icons/Restart.png" id="3_t581d"]
+[ext_resource type="Texture2D" uid="uid://df1rpu70h11d6" path="res://assets/buttons/icons/Play.png" id="4_lf33m"]
+[ext_resource type="Texture2D" uid="uid://ci1e0ino8veb2" path="res://assets/buttons/icons/Settings.png" id="5_kbi4y"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -33,18 +36,96 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_4u66g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/New"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -14.5
+offset_right = 75.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/New/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_t581d")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/New/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "NEW"
 
 [node name="Load" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_4u66g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Load"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -14.5
+offset_right = 75.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Load/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_lf33m")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Load/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "LOAD"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_4u66g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -14.5
+offset_right = 75.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Options/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_kbi4y")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Options/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
 text = "OPTIONS"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/New" to="." method="_on_enter_pressed"]
