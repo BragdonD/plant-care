@@ -1,3 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://c2kiexhi7n3hq"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c2kiexhi7n3hq"]
+
+[ext_resource type="FontFile" uid="uid://cdhh4o8qdfv7m" path="res://assets/fonts/Text (Black) (8x10).png" id="1_kuhg5"]
 
 [resource]
+default_font = ExtResource("1_kuhg5")
+default_font_size = 0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfdf4w0cmwcrh"]
+[gd_scene load_steps=9 format=3 uid="uid://bfdf4w0cmwcrh"]
 
+[ext_resource type="Script" path="res://scene/menu/new_game_menu/new_game_menu.gd" id="1_00ydc"]
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_6uh52"]
 [ext_resource type="Texture2D" uid="uid://bypsqri0dhdj6" path="res://assets/buttons/icons/User.png" id="1_av26o"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="1_gikoq"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_00ydc")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(250, 250)
@@ -53,6 +55,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_gikoq")
+theme_override_font_sizes/font_size = 15
 text = "NEW USER"
 
 [node name="UserName" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
@@ -68,6 +71,7 @@ texture = ExtResource("1_av26o")
 stretch_mode = 5
 
 [node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/UserName"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -146,3 +150,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 6
 text = "CREATE"
+
+[connection signal="text_changed" from="Panel/MarginContainer/VBoxContainer/UserName/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm" to="." method="_on_confirm_pressed"]
