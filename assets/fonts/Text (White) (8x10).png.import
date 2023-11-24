@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dprl42ytdk810"
+path="res://.godot/imported/Text (White) (8x10).png-703b5a9cbeb89987edf31210e214f82d.res"
+
+[deps]
+
+source_file="res://assets/fonts/Text (White) (8x10).png"
+dest_files=["res://.godot/imported/Text (White) (8x10).png-703b5a9cbeb89987edf31210e214f82d.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
