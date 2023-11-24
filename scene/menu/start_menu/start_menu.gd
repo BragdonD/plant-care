@@ -11,4 +11,6 @@ func _on_new_pressed():
 	start_menu.visible = false
 
 func _on_load_pressed():
-	pass # Replace with function body.
+	var load_game_menu = get_node("../load_game_menu")
+	load_game_menu.visible = true
+	start_menu.visible = false

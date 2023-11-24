@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://drlqv0nwxmhjn"]
+
+[ext_resource type="Script" path="res://scene/menu/load_game_menu/load_game_menu.gd" id="1_8xkif"]
+[ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_uhudi"]
+[ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="2_5vcwb"]
+[ext_resource type="PackedScene" uid="uid://c1tp57fxqhsav" path="res://scene/elements/game_save.tscn" id="3_0mp6r"]
+[ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="5_wajof"]
+[ext_resource type="Texture2D" uid="uid://b2114i5v73uvc" path="res://assets/buttons/icons/Back.png" id="6_s7ry2"]
+[ext_resource type="Texture2D" uid="uid://df1rpu70h11d6" path="res://assets/buttons/icons/Play.png" id="7_xljc3"]
+
+[node name="load_game_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8xkif")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uhudi")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -90.0
+offset_right = 89.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TitleBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_5vcwb")
+theme_override_font_sizes/font_size = 15
+text = "LOAD USER"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="game_save" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_0mp6r")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="game_save2" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_0mp6r")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="game_save3" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_0mp6r")]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_wajof")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -14.5
+offset_right = 38.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Back/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_s7ry2")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Back/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "BACK"
+
+[node name="Confirm" type="Button" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("5_wajof")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -14.5
+offset_right = 38.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("7_xljc3")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer/Confirm/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "LOAD"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/Back" to="." method="_on_back_pressed"]
