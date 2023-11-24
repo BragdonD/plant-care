@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1tp57fxqhsav"]
+[gd_scene load_steps=4 format=3 uid="uid://c1tp57fxqhsav"]
 
 [ext_resource type="Theme" uid="uid://b3oyoh1mykaw8" path="res://themes/elements/game_save/panel.tres" id="1_w8fec"]
+[ext_resource type="Texture2D" uid="uid://cpf1ti4wqjnip" path="res://assets/buttons/icons/Save.png" id="2_skjle"]
+[ext_resource type="Texture2D" uid="uid://ci1e0ino8veb2" path="res://assets/buttons/icons/Settings.png" id="3_g0ah0"]
 
 [node name="game_save" type="Control"]
 layout_mode = 3
@@ -18,3 +20,38 @@ anchor_right = 1.0
 offset_bottom = 50.0
 grow_horizontal = 2
 theme = ExtResource("1_w8fec")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("2_skjle")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Username" type="Label" parent="Panel/GridContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LastEdit" type="Label" parent="Panel/GridContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+icon = ExtResource("3_g0ah0")
