@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://b3oyoh1mykaw8" path="res://themes/elements/game_save/panel.tres" id="1_w8fec"]
 [ext_resource type="Texture2D" uid="uid://cpf1ti4wqjnip" path="res://assets/buttons/icons/Save.png" id="2_skjle"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="3_3vxot"]
-[ext_resource type="Texture2D" uid="uid://ci1e0ino8veb2" path="res://assets/buttons/icons/Settings.png" id="3_g0ah0"]
+[ext_resource type="Texture2D" uid="uid://d1jca78hnil8g" path="res://assets/buttons/icons/Bin.png" id="4_mn0ag"]
 
 [node name="game_save" type="Control"]
 custom_minimum_size = Vector2(0, 50)
@@ -67,4 +67,5 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-icon = ExtResource("3_g0ah0")
+icon = ExtResource("4_mn0ag")
+icon_alignment = 1
