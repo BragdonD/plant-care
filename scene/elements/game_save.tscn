@@ -84,5 +84,3 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 icon = ExtResource("4_mn0ag")
 icon_alignment = 1
-
-[connection signal="pressed" from="Panel/GridContainer/Select" to="." method="_on_select_pressed"]

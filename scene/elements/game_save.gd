@@ -10,6 +10,3 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_select_pressed():
-	pass # Replace with function body.

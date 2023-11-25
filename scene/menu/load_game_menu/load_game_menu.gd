@@ -4,13 +4,14 @@ extends Node
 
 var load_game_menu
 var save_container
+var save_game_button = []
+var selected_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_game_menu = $"."
 	save_container = $"Panel/MarginContainer/VBoxContainer/ScrollContainer/SaveContainer"
 	for game in all_games:
-		print_debug(game)
 		add_save_to_save_container(game)
 
 func add_save_to_save_container(game):
@@ -22,14 +23,27 @@ func add_save_to_save_container(game):
 	
 	username_label.text = game["username"]
 	lastedit_label.text = format_date(game["last_see"])
-
 	# when the scene is clicked, show as if selected
-	# game_saved_instance.connect("gui_input", self, "on_game_saved_clicked", [game_saved_instance, game])
-
+	var select_button_node = game_saved_instance.get_node("Panel/GridContainer/Select")
+	select_button_node.pressed.connect(_on_game_saved_instance_pressed.bind(game_saved_instance))
+	save_game_button.append(select_button_node)
 	save_container.add_child(game_saved_instance)
 
+# Function to handle the selection when a game_saved_instance is clicked
+func _on_game_saved_instance_pressed(select):
+	# Deselect all other game_saved_instance
+	deselect_all_saved_instances()
+
+	# Select the clicked game_saved_instance
+	select.get_node("Panel/GridContainer/Select").button_pressed = true;
+	selected_game = select
+
+func deselect_all_saved_instances():
+	for child in save_game_button:
+		child.button_pressed = false;
+
 func format_date(input_date_str):
-	print_debug(input_date_str)
+	# print_debug(input_date_str)
 	# Split the input date string into date and time parts
 	var date_time_parts = input_date_str.split("T")
 	# Split the date part into year, month, and day
