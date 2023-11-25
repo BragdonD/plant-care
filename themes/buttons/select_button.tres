@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://oo7wqjuhhpey"]
+
+[ext_resource type="StyleBox" uid="uid://dyylem5i0406" path="res://themes/buttons/select_button_focus.tres" id="1_r5f36"]
+
+[resource]
+CheckButton/styles/focus = ExtResource("1_r5f36")

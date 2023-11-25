@@ -22,7 +22,10 @@ func add_save_to_save_container(game):
 	
 	username_label.text = game["username"]
 	lastedit_label.text = format_date(game["last_see"])
-	# delete_button.connect("pressed", self, "_on_delete_button_pressed", [game["path"]])
+
+	# when the scene is clicked, show as if selected
+	# game_saved_instance.connect("gui_input", self, "on_game_saved_clicked", [game_saved_instance, game])
+
 	save_container.add_child(game_saved_instance)
 
 func format_date(input_date_str):
