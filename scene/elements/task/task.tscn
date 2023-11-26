@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://mjwh0dha1xpb"]
+[gd_scene load_steps=3 format=3 uid="uid://mjwh0dha1xpb"]
 
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_2ajoh"]
+[ext_resource type="Texture2D" uid="uid://beunu8g4q8nbn" path="res://assets/buttons/icons/See.png" id="2_odlq2"]
 
 [node name="task" type="Control"]
 layout_mode = 3
@@ -44,3 +45,6 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+icon = ExtResource("2_odlq2")
+icon_alignment = 1
+expand_icon = true
