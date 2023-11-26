@@ -58,9 +58,7 @@ func format_date(input_date_str):
 	year = year.substr(2)
 	# Format the date in the desired output format
 	var output_date_str = "%s-%s-%s %s:%s" % [month, day, year, hour, minute]
-
 	return output_date_str
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
