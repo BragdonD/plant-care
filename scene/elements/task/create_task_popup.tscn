@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwfvn362ysux6"]
+[gd_scene load_steps=6 format=3 uid="uid://cwfvn362ysux6"]
 
+[ext_resource type="Script" path="res://scene/elements/task/create_task_popup.gd" id="1_2oepa"]
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_hfmh4"]
 [ext_resource type="Texture2D" uid="uid://pqtaaksaxcow" path="res://assets/buttons/icons/Close.png" id="2_iq1j7"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="3_eu4r4"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2oepa")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -104,7 +106,7 @@ theme = ExtResource("3_eu4r4")
 text = "DESCRIPTION:"
 vertical_alignment = 1
 
-[node name="TaskDescription" type="RichTextLabel" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/DescriptionContainer"]
+[node name="TaskDescription" type="TextEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/DescriptionContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
@@ -148,3 +150,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("4_25p47")
 text = "CREATE"
+
+[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/NameContainer/TaskName" to="." method="_on_task_name_text_changed"]
+[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/DescriptionContainer/TaskDescription" to="." method="_on_task_description_text_changed"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerNeeded" to="." method="_on_timer_needed_toggled"]
+[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime" to="." method="_on_timer_time_text_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/MarginContainer/Create" to="." method="_on_create_pressed"]
