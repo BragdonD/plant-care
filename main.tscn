@@ -37,3 +37,5 @@ texture = ExtResource("3_ag572")
 [node name="menu" parent="VBoxContainer" instance=ExtResource("1_7h0w0")]
 
 [node name="Game" parent="VBoxContainer" instance=ExtResource("2_5wlhu")]
+visible = false
+layout_mode = 2
