@@ -1,0 +1,150 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwfvn362ysux6"]
+
+[ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_hfmh4"]
+[ext_resource type="Texture2D" uid="uid://pqtaaksaxcow" path="res://assets/buttons/icons/Close.png" id="2_iq1j7"]
+[ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="3_eu4r4"]
+[ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="4_25p47"]
+
+[node name="create_task_popup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(280, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -229.5
+offset_right = 140.0
+offset_bottom = 229.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hfmh4")
+
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -23.0
+offset_bottom = 24.0
+grow_horizontal = 0
+icon = ExtResource("2_iq1j7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_eu4r4")
+text = "CREATE A TASK"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="NameContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameTitle" type="Label" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_eu4r4")
+text = "NAME:"
+vertical_alignment = 1
+
+[node name="TaskName" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/NameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="DescriptionContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="DescriptionTitle" type="Label" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/DescriptionContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_eu4r4")
+text = "DESCRIPTION:"
+vertical_alignment = 1
+
+[node name="TaskDescription" type="RichTextLabel" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/DescriptionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_eu4r4")
+
+[node name="TimerContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="TimerTitle" type="Label" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_eu4r4")
+text = "TIMER:"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer"]
+layout_mode = 2
+
+[node name="TimerNeeded" type="CheckButton" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerTime" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Create" type="Button" parent="Panel/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_25p47")
+text = "CREATE"
