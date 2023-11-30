@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://wqsqmab7belf"]
+[gd_scene load_steps=4 format=3 uid="uid://wqsqmab7belf"]
 
 [ext_resource type="Texture2D" uid="uid://dnfj61gvhwedh" path="res://assets/background/blue.png" id="1_gvq5o"]
 [ext_resource type="Theme" uid="uid://sv8i1y8bl2eu" path="res://themes/panel/task_panel.tres" id="2_yxfqp"]
+[ext_resource type="PackedScene" uid="uid://d1f3yacjo4bx" path="res://scene/elements/task/task_popup.tscn" id="3_50urs"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -28,18 +29,16 @@ size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PlantContainer"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 192.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PlantContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_gvq5o")
@@ -62,3 +61,45 @@ offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_yxfqp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(340, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="task_popup" parent="." instance=ExtResource("3_50urs")]
+visible = false
+top_level = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 55.0
+offset_top = 170.0
+offset_right = 305.0
+offset_bottom = 470.0
