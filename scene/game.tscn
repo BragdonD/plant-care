@@ -35,7 +35,7 @@ size_flags_vertical = 3
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 166.0
+offset_bottom = 241.0
 grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PlantContainer/Panel"]
@@ -53,15 +53,15 @@ stretch_mode = 1
 top_level = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D"]
-position = Vector2(187, 19)
-scale = Vector2(0.246406, 0.247187)
+position = Vector2(180, 119)
+scale = Vector2(0.599603, 0.486771)
 sprite_frames = ExtResource("2_bhe3l")
-animation = &"display"
-frame = 30
-frame_progress = 0.839099
+animation = &"state-dead-2"
+speed_scale = 2.0
 
 [node name="Tasks" type="Control" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 475)
+z_index = 1
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3
 

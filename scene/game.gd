@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D.play("display")
+	$MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D.play("state-3")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
