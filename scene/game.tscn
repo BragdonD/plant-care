@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://wqsqmab7belf"]
+[gd_scene load_steps=8 format=3 uid="uid://wqsqmab7belf"]
 
 [ext_resource type="Texture2D" uid="uid://dnfj61gvhwedh" path="res://assets/background/blue.png" id="1_gvq5o"]
 [ext_resource type="Script" path="res://scene/game.gd" id="1_xi2kp"]
 [ext_resource type="SpriteFrames" uid="uid://dptp06rgmhghf" path="res://scene/plants/plant_sprite.tres" id="2_bhe3l"]
 [ext_resource type="Theme" uid="uid://sv8i1y8bl2eu" path="res://themes/panel/task_panel.tres" id="2_yxfqp"]
 [ext_resource type="PackedScene" uid="uid://d1f3yacjo4bx" path="res://scene/elements/task/task_popup.tscn" id="3_50urs"]
+[ext_resource type="Script" path="res://scene/plant-view.gd" id="3_vrct0"]
 [ext_resource type="Texture2D" uid="uid://f3uaapexhoru" path="res://assets/buttons/icons/Add.png" id="5_xuxn1"]
 
 [node name="Game" type="Control"]
@@ -51,12 +52,15 @@ stretch_mode = 1
 
 [node name="Node2D" type="Node2D" parent="MarginContainer/VBoxContainer/PlantContainer/Panel"]
 top_level = true
+script = ExtResource("3_vrct0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D"]
 position = Vector2(180, 119)
 scale = Vector2(0.599603, 0.486771)
 sprite_frames = ExtResource("2_bhe3l")
-animation = &"state-dead-2"
+animation = &"state-1"
+frame = 46
+frame_progress = 0.779865
 speed_scale = 2.0
 
 [node name="Tasks" type="Control" parent="MarginContainer/VBoxContainer"]
@@ -115,3 +119,4 @@ top_level = true
 layout_mode = 1
 
 [connection signal="animation_finished" from="MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
