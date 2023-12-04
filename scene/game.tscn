@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://wqsqmab7belf"]
+[gd_scene load_steps=9 format=3 uid="uid://wqsqmab7belf"]
 
 [ext_resource type="Texture2D" uid="uid://dnfj61gvhwedh" path="res://assets/background/blue.png" id="1_gvq5o"]
 [ext_resource type="Script" path="res://scene/game.gd" id="1_xi2kp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d1f3yacjo4bx" path="res://scene/elements/task/task_popup.tscn" id="3_50urs"]
 [ext_resource type="Script" path="res://scene/plant-view.gd" id="3_vrct0"]
 [ext_resource type="Texture2D" uid="uid://f3uaapexhoru" path="res://assets/buttons/icons/Add.png" id="5_xuxn1"]
+[ext_resource type="PackedScene" uid="uid://cwfvn362ysux6" path="res://scene/elements/task/create_task_popup.tscn" id="8_afruk"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -99,7 +100,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="CreateTask" type="Button" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 icon = ExtResource("5_xuxn1")
@@ -115,8 +116,13 @@ size_flags_vertical = 3
 
 [node name="task_popup" parent="." instance=ExtResource("3_50urs")]
 visible = false
-top_level = true
+z_index = 2
 layout_mode = 1
 
-[connection signal="animation_finished" from="MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="create_task_popup" parent="." instance=ExtResource("8_afruk")]
+visible = false
+z_index = 2
+layout_mode = 1
+
 [connection signal="animation_looped" from="MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/CreateTask" to="." method="_on_create_task_pressed"]
