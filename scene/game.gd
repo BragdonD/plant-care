@@ -10,6 +10,7 @@ func _ready():
 	animatedSprite2D = $MarginContainer/VBoxContainer/PlantContainer/Panel/Node2D/AnimatedSprite2D
 	createTaskPopUp = $create_task_popup
 	# Connect signals
+	createTaskPopUp.create_task_popup_close.connect(_on_create_task_popup_close)
 	animation_timer.timeout.connect(_on_animation_timer_timeout)
 	add_child(animation_timer)
 	# Start the animation
@@ -33,3 +34,6 @@ func _on_animation_timer_timeout():
 
 func _on_create_task_pressed():
 	createTaskPopUp.visible = true
+
+func _on_create_task_popup_close():
+	createTaskPopUp.visible = false

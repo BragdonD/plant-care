@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwfvn362ysux6"]
+[gd_scene load_steps=9 format=3 uid="uid://cwfvn362ysux6"]
 
 [ext_resource type="Script" path="res://scene/elements/task/create_task_popup.gd" id="1_2oepa"]
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_hfmh4"]
 [ext_resource type="Texture2D" uid="uid://pqtaaksaxcow" path="res://assets/buttons/icons/Close.png" id="2_iq1j7"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="3_eu4r4"]
+[ext_resource type="Theme" uid="uid://sehh0dw6rdga" path="res://themes/buttons/close_button.tres" id="3_oaxdj"]
 [ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="4_25p47"]
+[ext_resource type="Theme" uid="uid://plpu3ajx1xsc" path="res://themes/input/text_input.tres" id="4_kf3ch"]
+[ext_resource type="Theme" uid="uid://oo7wqjuhhpey" path="res://themes/buttons/select_button.tres" id="5_gndw6"]
 
 [node name="create_task_popup" type="Control"]
 layout_mode = 3
@@ -38,16 +41,6 @@ offset_bottom = 229.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_hfmh4")
-
-[node name="Close" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -23.0
-offset_bottom = 24.0
-grow_horizontal = 0
-icon = ExtResource("2_iq1j7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -91,9 +84,11 @@ text = "NAME:"
 vertical_alignment = 1
 
 [node name="TaskName" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/NameContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme = ExtResource("4_kf3ch")
 
 [node name="DescriptionContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -110,7 +105,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("3_eu4r4")
+theme = ExtResource("4_kf3ch")
+wrap_mode = 1
 
 [node name="TimerContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -128,11 +124,30 @@ layout_mode = 2
 
 [node name="TimerNeeded" type="CheckButton" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_gndw6")
 
-[node name="TimerTime" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer"]
+[node name="TimerTime" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TimerTimeHour" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+theme = ExtResource("4_kf3ch")
+placeholder_text = "H."
+
+[node name="TimerTimeMinute" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_kf3ch")
+placeholder_text = "M."
+
+[node name="TimerTimeSecondes" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_kf3ch")
+placeholder_text = "S."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -151,8 +166,27 @@ size_flags_vertical = 4
 theme = ExtResource("4_25p47")
 text = "CREATE"
 
+[node name="Close" type="Button" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = -5.0
+offset_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 0
+theme = ExtResource("3_oaxdj")
+icon = ExtResource("2_iq1j7")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/NameContainer/TaskName" to="." method="_on_task_name_text_changed"]
 [connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/DescriptionContainer/TaskDescription" to="." method="_on_task_description_text_changed"]
 [connection signal="toggled" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerNeeded" to="." method="_on_timer_needed_toggled"]
-[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime" to="." method="_on_timer_time_text_changed"]
+[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime/TimerTimeHour" to="." method="_on_timer_time_hour_text_changed"]
+[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime/TimerTimeMinute" to="." method="_on_timer_time_minute_text_changed"]
+[connection signal="text_changed" from="Panel/VBoxContainer/MarginContainer2/VBoxContainer/TimerContainer/HBoxContainer/TimerTime/TimerTimeSecondes" to="." method="_on_timer_time_secondes_text_changed"]
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/MarginContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]
