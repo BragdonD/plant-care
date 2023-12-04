@@ -74,11 +74,17 @@ func _on_close_pressed():
 	reset()
 	emit_signal("create_task_popup_close")
 
-signal create_task(task_name: String, task_description: String, timer: bool, hours: int, min: int, sec: int)
-
 func _on_create_pressed():
 	emit_signal("create_task_popup_close")
-	create_task.emit(task_name, task_description, )
+	bus.printRegister()
+	bus.postEvent("create_new_task", {
+		"task_name": task_name, 
+		"task_description": task_description, 
+		"task_timer": task_timer, 
+		"task_hours": task_hours, 
+		"task_min": task_min, 
+		"task_sec": task_sec
+	})
 
 func check_text_is_number(text: String):
 	var is_number = true

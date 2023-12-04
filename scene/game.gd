@@ -16,9 +16,6 @@ func _ready():
 	# Start the animation
 	animatedSprite2D.play()
 
-func _process(delta):
-	pass
-
 func _on_animated_sprite_2d_animation_looped():
 	# Stop the animation
 	animatedSprite2D.stop()
@@ -30,7 +27,6 @@ func _on_animated_sprite_2d_animation_looped():
 func _on_animation_timer_timeout():
 	# Restart the animation after the timer expires
 	animatedSprite2D.play()
-
 
 func _on_create_task_pressed():
 	createTaskPopUp.visible = true
