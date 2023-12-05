@@ -83,6 +83,7 @@ func _on_create_task_popup_close():
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		
 		game_manager_instance.save()
 		get_tree().quit() # default behavior
 

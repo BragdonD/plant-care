@@ -48,14 +48,14 @@ func _on_game_create_new_task(data):
 func _on_game_task_done(data):
 	var task = data.task
 	tasks_done.append(task)
-	tasks.erase(tasks.find(task))
+	tasks.erase(task)
+	increase_plant_state()
 
 func _on_game_task_failed(data):
 	var task = data.task
 	tasks_failed.append(task)
-	tasks.erase(tasks.find(task))
-	print_debug(tasks)
-	print_debug(tasks_failed)
+	tasks.erase(task)
+	decrease_plant_state()
 
 func decrease_plant_state():
 	if(plant_state > -2):
@@ -95,24 +95,18 @@ func load(data):
 			var task = Task.new(
 				task_dict["name"],
 				task_dict["description"],
-				task_dict["timer"],
-				task_dict["hours"],
-				task_dict["min"],
-				task_dict["sec"]
+				false, 0, 0, 0
 			)
-			task.timeLeft = task_dict["timeLeft"]
+			task.timeLeft = 0
 			tasks_done.append(task)
 		
 		for task_dict in game_data["tasks_failed"]:
 			var task = Task.new(
 				task_dict["name"],
 				task_dict["description"],
-				task_dict["timer"],
-				task_dict["hours"],
-				task_dict["min"],
-				task_dict["sec"]
+				false, 0, 0, 0
 			)
-			task.timeLeft = task_dict["timeLeft"]
+			task.timeLeft = 0
 			tasks_failed.append(task)
 		
 		plant_state = game_data["plant_state"]
@@ -134,8 +128,8 @@ func save():
 		var game_data = {
 			"last_see": "2023-12-05T13:56:58",
 			"tasks": [],
-			"tasks_done": tasks_done,
-			"tasks_failed": tasks_failed,
+			"tasks_done": [],
+			"tasks_failed": [],
 			"username": "TEST"
 		}
 
