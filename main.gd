@@ -1,12 +1,15 @@
 extends Node
 
 @onready var all_games = SaveFile.files_metadata
-@onready var game_manager_instance: GameManager
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$VBoxContainer/Game.visible = false
-	game_manager_instance = GameManager.new()
-	# Call the _ready function explicitly
-	game_manager_instance._ready()
-	
+	$Game.visible = false
+	bus.registerHandler("play_game", self._play_game)
+
+func _play_game():
+	$VBoxContainer.remove_child($VBoxContainer/menu)
+	$Game.visible = true
+	$VBoxContainer/TextureRect.visible = false
+	$VBoxContainer.visible = false

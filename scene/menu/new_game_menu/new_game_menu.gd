@@ -25,7 +25,7 @@ func _on_confirm_pressed():
 		error.visible = true
 	else:
 		SaveFile.create_new_game(username)
-		get_tree().change_scene_to_file("res://scene/game.tscn")
+		bus.postSimpleEvent("play_game")
 
 
 func _on_line_edit_text_changed(new_text):

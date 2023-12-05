@@ -11,7 +11,6 @@ var files_metadata: Dictionary = {
 
 func _ready():
 	if not DirAccess.dir_exists_absolute(SAVES_PATH):
-		print_debug("here")
 		var dir = DirAccess.open("user://")
 		dir.make_dir(SAVES_PATH)
 	load_all_games()
@@ -31,6 +30,7 @@ func create_new_game(username: String):
 	})
 
 	save_metadata()
+	create_new_file(file_name, new_game_save.username, new_game_save.last_see)
 
 func load_all_games():
 	if not FileAccess.file_exists(SAVE_FILE):
@@ -38,13 +38,25 @@ func load_all_games():
 	else:
 		var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
 		files_metadata = file.get_var(true)
-		print_debug(files_metadata)
 		file.close()
 
 func generate_random_name():
-	return SAVES_PATH + uuid.v4() + ".save";
+	return SAVES_PATH + uuid.v4() + ".json";
 
 func save_metadata():
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	file.store_var(files_metadata)
+	file.close()
+
+func create_new_file(path: String, username: String, date: String):
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	var game_data = {
+		"username": username,
+		"tasks": [],
+		"tasks_done": [],
+		"tasks_failed": [],
+		"last_see": date
+	}
+	var game_data_str = JSON.stringify(game_data)
+	file.store_line(game_data_str)
 	file.close()

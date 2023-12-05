@@ -42,6 +42,7 @@ offset_bottom = 241.0
 grow_horizontal = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PlantContainer/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,7 +67,7 @@ frame_progress = 0.779865
 speed_scale = 2.0
 
 [node name="Tasks" type="Control" parent="MarginContainer/VBoxContainer"]
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 3

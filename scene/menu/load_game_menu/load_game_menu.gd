@@ -80,4 +80,4 @@ func _on_confirm_pressed():
 		"path": game_path
 	})
 	
-	get_tree().change_scene_to_file("res://scene/game.tscn")
+	bus.postSimpleEvent("play_game")
