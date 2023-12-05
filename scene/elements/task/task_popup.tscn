@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1f3yacjo4bx"]
+[gd_scene load_steps=6 format=3 uid="uid://d1f3yacjo4bx"]
 
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_xusxt"]
+[ext_resource type="Theme" uid="uid://sehh0dw6rdga" path="res://themes/buttons/close_button.tres" id="2_3beb0"]
 [ext_resource type="Texture2D" uid="uid://pqtaaksaxcow" path="res://assets/buttons/icons/Close.png" id="2_gtqwl"]
 [ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="3_kcgsi"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="3_yy6kt"]
@@ -35,16 +36,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xusxt")
-
-[node name="Close" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -23.0
-offset_bottom = 24.0
-grow_horizontal = 0
-icon = ExtResource("2_gtqwl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -95,3 +86,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_kcgsi")
 text = "VALIDATE"
+
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 6.0
+offset_bottom = 18.0
+grow_horizontal = 0
+theme = ExtResource("2_3beb0")
+icon = ExtResource("2_gtqwl")
+icon_alignment = 1
+expand_icon = true

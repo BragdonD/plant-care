@@ -20,9 +20,17 @@ func _ready():
 	add_child(animation_timer)
 	# Start the animation
 	animatedSprite2D.play()
-	
-	for task in game_manager_instance.get_tasks():
-		create_task_node(task)
+	bus.registerHandler("load_game", self.load_game)
+	bus.registerHandler("task_see_more", self.display_task)
+
+func display_task(data):
+	$task_popup.visible = true
+	$task_popup/Panel/VBoxContainer/MarginContainer2/Description.text = data.task.description
+	$task_popup/Panel/VBoxContainer/MarginContainer/Name.text = data.task.name
+	$task_popup/Panel/Close.pressed.connect(self.close_task_popup)
+
+func close_task_popup():
+	$task_popup.visible = false
 
 func _on_animated_sprite_2d_animation_looped():
 	# Stop the animation
@@ -57,10 +65,18 @@ func create_task_node(task: Task):
 	
 	var see_more_node = task_node_instance.get_node("Panel/HBoxContainer/SeeMore")
 	see_more_node.pressed.connect(self.task_see_more.bind(task))
+	return task_node_instance
 
 func task_see_more(task: Task):
 	bus.postEvent("task_see_more", {
 		"task": task
 	})
 
+func load_game(data):
+	while game_manager_instance.ready == false:
+		pass
+	print(game_manager_instance.get_tasks())
+	for task in game_manager_instance.get_tasks():
+		var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
+		container.add_child(create_task_node(task))
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wqsqmab7belf"]
+[gd_scene load_steps=11 format=3 uid="uid://wqsqmab7belf"]
 
 [ext_resource type="Texture2D" uid="uid://dnfj61gvhwedh" path="res://assets/background/blue.png" id="1_gvq5o"]
 [ext_resource type="Script" path="res://scene/game.gd" id="1_xi2kp"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d1f3yacjo4bx" path="res://scene/elements/task/task_popup.tscn" id="3_50urs"]
 [ext_resource type="Script" path="res://scene/plant-view.gd" id="3_vrct0"]
 [ext_resource type="Texture2D" uid="uid://f3uaapexhoru" path="res://assets/buttons/icons/Add.png" id="5_xuxn1"]
-[ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="6_by3a2"]
+[ext_resource type="Theme" uid="uid://plpu3ajx1xsc" path="res://themes/input/text_input.tres" id="6_whpyr"]
+[ext_resource type="Theme" uid="uid://sehh0dw6rdga" path="res://themes/buttons/close_button.tres" id="7_smp66"]
 [ext_resource type="PackedScene" uid="uid://cwfvn362ysux6" path="res://scene/elements/task/create_task_popup.tscn" id="8_afruk"]
 
 [node name="Game" type="Control"]
@@ -102,11 +103,16 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_whpyr")
+text = "TASKS"
+
 [node name="CreateTask" type="Button" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-theme = ExtResource("6_by3a2")
-text = "CREATE TASK"
+theme = ExtResource("7_smp66")
 icon = ExtResource("5_xuxn1")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer"]

@@ -5,6 +5,7 @@ var tasks: Array[Task] = []
 var tasks_done: Array = []
 var tasks_failed: Array = []
 var path: String = ""
+var ready = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,6 +86,7 @@ func load(data):
 		print("Game data loaded successfully.")
 	else:
 		print("Error opening file for reading.")
+	ready = true
 
 func save():
 	if path == "":
