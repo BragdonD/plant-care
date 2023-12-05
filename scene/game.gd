@@ -5,6 +5,8 @@ var game_manager_instance: GameManager
 var animation_timer := Timer.new()
 var animatedSprite2D : AnimatedSprite2D
 var createTaskPopUp: Control
+var selected_task_instance : Node = null
+var selected_task : Task = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,9 +30,29 @@ func display_task(data):
 	$task_popup/Panel/VBoxContainer/MarginContainer2/Description.text = data.task.description
 	$task_popup/Panel/VBoxContainer/MarginContainer/Name.text = data.task.name
 	$task_popup/Panel/Close.pressed.connect(self.close_task_popup)
+	$task_popup/Panel/VBoxContainer/HBoxContainer/Validate.pressed.connect(self.validate_task)
+	$task_popup/Panel/VBoxContainer/HBoxContainer/Failed.pressed.connect(self.failed_task)
 
 func close_task_popup():
 	$task_popup.visible = false
+
+func validate_task():
+	$task_popup.visible = false
+	var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
+	container.remove_child(selected_task_instance)
+	selected_task = null
+	bus.postEvent("validate_task", {
+		"task": selected_task
+	})
+
+func failed_task():
+	$task_popup.visible = false
+	var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
+	container.remove_child(selected_task_instance)
+	selected_task = null
+	bus.postEvent("failed_task", {
+		"task": selected_task
+	})
 
 func _on_animated_sprite_2d_animation_looped():
 	# Stop the animation
@@ -64,10 +86,12 @@ func create_task_node(task: Task):
 	name_node.text = task.name
 	
 	var see_more_node = task_node_instance.get_node("Panel/HBoxContainer/SeeMore")
-	see_more_node.pressed.connect(self.task_see_more.bind(task))
+	see_more_node.pressed.connect(self.task_see_more.bind(task_node_instance, task))
 	return task_node_instance
 
-func task_see_more(task: Task):
+func task_see_more(task_node_instance, task: Task):
+	selected_task_instance = task_node_instance
+	selected_task = task
 	bus.postEvent("task_see_more", {
 		"task": task
 	})

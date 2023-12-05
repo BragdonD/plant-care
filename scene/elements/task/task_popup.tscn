@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1f3yacjo4bx"]
+[gd_scene load_steps=7 format=3 uid="uid://d1f3yacjo4bx"]
 
 [ext_resource type="Theme" uid="uid://qpgvlcymvrtx" path="res://themes/panel/modal.tres" id="1_xusxt"]
 [ext_resource type="Theme" uid="uid://sehh0dw6rdga" path="res://themes/buttons/close_button.tres" id="2_3beb0"]
 [ext_resource type="Texture2D" uid="uid://pqtaaksaxcow" path="res://assets/buttons/icons/Close.png" id="2_gtqwl"]
 [ext_resource type="Theme" uid="uid://cjj4k8q3qthbu" path="res://themes/buttons/default_button.tres" id="3_kcgsi"]
+[ext_resource type="Theme" uid="uid://ht6mo1v1snkt" path="res://themes/buttons/failde.tres" id="3_riwfe"]
 [ext_resource type="Theme" uid="uid://c2kiexhi7n3hq" path="res://themes/heading/heading_text.tres" id="3_yy6kt"]
 
 [node name="task_popup" type="Control"]
@@ -73,16 +74,20 @@ text = "AHJEHAEKJHEKEAKLJEALKJE"
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(125, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="Validate" type="Button" parent="Panel/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Failed" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("3_riwfe")
+text = "FAILED"
+
+[node name="Validate" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = ExtResource("3_kcgsi")
 text = "VALIDATE"
