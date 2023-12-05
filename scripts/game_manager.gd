@@ -1,6 +1,7 @@
 # task_manager.gd (singleton)
 class_name GameManager
 
+var plant_state = 0
 var tasks: Array[Task] = []
 var tasks_done: Array = []
 var tasks_failed: Array = []
@@ -52,6 +53,14 @@ func _on_game_task_failed(data):
 	tasks_failed.append(task)
 	tasks.erase(tasks.find(task))
 
+func decrease_plant_state():
+	if(plant_state > -2):
+		plant_state -= 1
+
+func increase_plant_state():
+	if(plant_state < 1):
+		plant_state += 1
+
 func load(data):
 	path = data.path
 	if not FileAccess.file_exists(data.path):
@@ -78,8 +87,31 @@ func load(data):
 			task.timeLeft = task_dict["timeLeft"]
 			tasks.append(task)
 
-		tasks_done = game_data["tasks_done"]
-		tasks_failed = game_data["tasks_failed"]
+		for task in game_data["tasks_done"]:
+			var task = Task.new(
+				task_dict["name"],
+				task_dict["description"],
+				task_dict["timer"],
+				task_dict["hours"],
+				task_dict["min"],
+				task_dict["sec"]
+			)
+			task.timeLeft = task_dict["timeLeft"]
+			tasks_done.append(task)
+		
+		for task in game_data["tasks_failed"]:
+			var task = Task.new(
+				task_dict["name"],
+				task_dict["description"],
+				task_dict["timer"],
+				task_dict["hours"],
+				task_dict["min"],
+				task_dict["sec"]
+			)
+			task.timeLeft = task_dict["timeLeft"]
+			tasks_failed.append(task)
+		
+		plant_state = game_data["plant_state"]
 
 		file.close()
 		print_debug(tasks)
@@ -115,6 +147,32 @@ func save():
 				"timeLeft": task.timeLeft
 			}
 			game_data["tasks"].append(task_dict)
+
+		for task in tasks_done:
+			var task_dict = {
+				"name": task.name,
+				"description": task.description,
+				"timer": task.timer,
+				"hours": task.hours,
+				"min": task.min,
+				"sec": task.sec,
+				"timeLeft": task.timeLeft
+			}
+			game_data["tasks_done"].append(task_dict)
+		
+		for task in tasks_failed:
+			var task_dict = {
+				"name": task.name,
+				"description": task.description,
+				"timer": task.timer,
+				"hours": task.hours,
+				"min": task.min,
+				"sec": task.sec,
+				"timeLeft": task.timeLeft
+			}
+			game_data["tasks_failed"].append(task_dict)
+		
+		game_data["plant_state"] = plant_state
 
 		# Serialize the dictionary to JSON
 		var json_str = JSON.stringify(game_data)
