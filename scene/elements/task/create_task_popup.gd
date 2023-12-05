@@ -76,7 +76,6 @@ func _on_close_pressed():
 
 func _on_create_pressed():
 	emit_signal("create_task_popup_close")
-	bus.printRegister()
 	bus.postEvent("create_new_task", {
 		"task_name": task_name, 
 		"task_description": task_description, 
