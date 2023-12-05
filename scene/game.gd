@@ -24,6 +24,12 @@ func _ready():
 	animatedSprite2D.play()
 	bus.registerHandler("load_game", self.load_game)
 	bus.registerHandler("task_see_more", self.display_task)
+	bus.registerHandler("register_task", self._on_game_create_new_task)
+
+func _on_game_create_new_task(data):
+	var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
+	container.add_child(create_task_node(data.task))
+	createTaskPopUp.visible = false
 
 func display_task(data):
 	$task_popup.visible = true
@@ -40,19 +46,21 @@ func validate_task():
 	$task_popup.visible = false
 	var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 	container.remove_child(selected_task_instance)
-	selected_task = null
 	bus.postEvent("validate_task", {
 		"task": selected_task
 	})
+	selected_task = null
+	selected_task_instance = null
 
 func failed_task():
 	$task_popup.visible = false
 	var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 	container.remove_child(selected_task_instance)
-	selected_task = null
 	bus.postEvent("failed_task", {
 		"task": selected_task
 	})
+	selected_task = null
+	selected_task_instance = null
 
 func _on_animated_sprite_2d_animation_looped():
 	# Stop the animation

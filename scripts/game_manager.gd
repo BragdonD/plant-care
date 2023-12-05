@@ -12,8 +12,8 @@ var ready = false
 func _ready():
 	bus.registerHandler("load_game", self.load)
 	bus.registerHandler("create_new_task", self._on_game_create_new_task)
-	bus.registerHandler("task_done", self._on_game_task_done)
-	bus.registerHandler("task_failed", self._on_game_task_failed)
+	bus.registerHandler("validate_task", self._on_game_task_done)
+	bus.registerHandler("failed_task", self._on_game_task_failed)
 	bus.registerHandler("save_game", self.save)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,7 +41,9 @@ func get_tasks_failed():
 func _on_game_create_new_task(data):
 	var task = Task.new(data.task_name, data.task_description, data.task_timer, data.task_hours, data.task_min, data.task_sec)
 	tasks.append(task)
-	print_debug(tasks)
+	bus.postEvent("register_task", {
+		"task": task
+	})
 
 func _on_game_task_done(data):
 	var task = data.task
@@ -52,6 +54,8 @@ func _on_game_task_failed(data):
 	var task = data.task
 	tasks_failed.append(task)
 	tasks.erase(tasks.find(task))
+	print_debug(tasks)
+	print_debug(tasks_failed)
 
 func decrease_plant_state():
 	if(plant_state > -2):
@@ -87,7 +91,7 @@ func load(data):
 			task.timeLeft = task_dict["timeLeft"]
 			tasks.append(task)
 
-		for task in game_data["tasks_done"]:
+		for task_dict in game_data["tasks_done"]:
 			var task = Task.new(
 				task_dict["name"],
 				task_dict["description"],
@@ -99,7 +103,7 @@ func load(data):
 			task.timeLeft = task_dict["timeLeft"]
 			tasks_done.append(task)
 		
-		for task in game_data["tasks_failed"]:
+		for task_dict in game_data["tasks_failed"]:
 			var task = Task.new(
 				task_dict["name"],
 				task_dict["description"],
@@ -114,7 +118,6 @@ func load(data):
 		plant_state = game_data["plant_state"]
 
 		file.close()
-		print_debug(tasks)
 		print("Game data loaded successfully.")
 	else:
 		print("Error opening file for reading.")
@@ -152,11 +155,6 @@ func save():
 			var task_dict = {
 				"name": task.name,
 				"description": task.description,
-				"timer": task.timer,
-				"hours": task.hours,
-				"min": task.min,
-				"sec": task.sec,
-				"timeLeft": task.timeLeft
 			}
 			game_data["tasks_done"].append(task_dict)
 		
@@ -164,11 +162,6 @@ func save():
 			var task_dict = {
 				"name": task.name,
 				"description": task.description,
-				"timer": task.timer,
-				"hours": task.hours,
-				"min": task.min,
-				"sec": task.sec,
-				"timeLeft": task.timeLeft
 			}
 			game_data["tasks_failed"].append(task_dict)
 		

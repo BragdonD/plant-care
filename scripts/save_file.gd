@@ -6,7 +6,7 @@ const SAVE_FILE = "user://all_saves.save"
 const SAVES_PATH = "user://saves/"
 
 var files_metadata: Dictionary = {
-	"files": [] as Array[GameSave]
+	"files": []
 }
 
 func _ready():
@@ -28,6 +28,8 @@ func create_new_game(username: String):
 		"username": new_game_save.username,
 		"last_see": new_game_save.last_see
 	})
+	
+	print_debug(files_metadata)
 
 	save_metadata()
 	create_new_file(file_name, new_game_save.username, new_game_save.last_see)
@@ -45,6 +47,7 @@ func generate_random_name():
 
 func save_metadata():
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
+	print_debug(files_metadata)
 	file.store_var(files_metadata)
 	file.close()
 
@@ -55,7 +58,8 @@ func create_new_file(path: String, username: String, date: String):
 		"tasks": [],
 		"tasks_done": [],
 		"tasks_failed": [],
-		"last_see": date
+		"last_see": date,
+		"plant_state": 0
 	}
 	var game_data_str = JSON.stringify(game_data)
 	file.store_line(game_data_str)
