@@ -68,3 +68,16 @@ func _on_back_pressed():
 	get_node("../start_menu").visible = true
 	load_game_menu.visible = false
 
+func _on_confirm_pressed():
+	var game_path = ""
+
+	for game in all_games:
+		if game["username"] == selected_game.get_node("Panel/GridContainer/VBoxContainer/Username").text and format_date(game["last_see"]) == selected_game.get_node("Panel/GridContainer/VBoxContainer/LastEdit").text and game["path"] != "":
+			game_path = game["path"]
+			break
+
+	bus.postEvent("load_game", {
+		"path": game_path
+	})
+	
+	get_tree().change_scene_to_file("res://scene/game.tscn")

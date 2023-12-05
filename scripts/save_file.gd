@@ -10,6 +10,10 @@ var files_metadata: Dictionary = {
 }
 
 func _ready():
+	if not DirAccess.dir_exists_absolute(SAVES_PATH):
+		print_debug("here")
+		var dir = DirAccess.open("user://")
+		dir.make_dir(SAVES_PATH)
 	load_all_games()
 
 func create_new_game(username: String):

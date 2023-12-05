@@ -33,3 +33,11 @@ func _on_create_task_pressed():
 
 func _on_create_task_popup_close():
 	createTaskPopUp.visible = false
+
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		bus.postSimpleEvent("save_game")
+		get_tree().quit() # default behavior
+
+

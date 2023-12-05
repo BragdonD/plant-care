@@ -14,3 +14,8 @@ static func postEvent(eventType, data):
 	if(eventHandlerRegister.has(eventType)): 
 		for m in eventHandlerRegister[eventType]:
 			m.call(data)
+
+static func postSimpleEvent(eventType):
+	if(eventHandlerRegister.has(eventType)): 
+		for m in eventHandlerRegister[eventType]:
+			m.call()

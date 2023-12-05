@@ -14,6 +14,7 @@ func _ready():
 	bus.registerHandler("create_new_task", self._on_game_create_new_task)
 	bus.registerHandler("task_done", self._on_game_task_done)
 	bus.registerHandler("task_failed", self._on_game_task_failed)
+	bus.registerHandler("save_game", self.save)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -51,10 +52,11 @@ func _on_game_task_failed(data):
 	tasks_failed.append(task)
 	tasks.erase(tasks.find(task))
 
-func load(path):
-	if not FileAccess.file_exists(path):
+func load(data):
+	path = data.path
+	if not FileAccess.file_exists(data.path):
 		return
-	var file = FileAccess.open(path, FileAccess.READ)
+	var file = FileAccess.open(data.path, FileAccess.READ)
 	tasks = file.get_var()
 	tasks_done = file.get_var()
 	tasks_failed = file.get_var()
