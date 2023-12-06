@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ct6g5q1tj76s0"]
+
+[ext_resource type="StyleBox" uid="uid://sa8hlhfa0b3l" path="res://themes/elements/username_label_normal.tres" id="1_puvyc"]
+[ext_resource type="FontFile" uid="uid://cdhh4o8qdfv7m" path="res://assets/fonts/Text (Black) (8x10).png" id="2_f5vmb"]
+
+[resource]
+default_font = ExtResource("2_f5vmb")
+Label/styles/normal = ExtResource("1_puvyc")

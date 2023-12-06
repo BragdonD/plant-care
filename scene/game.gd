@@ -25,6 +25,10 @@ func _ready():
 	bus.registerHandler("load_game", self.load_game)
 	bus.registerHandler("task_see_more", self.display_task)
 	bus.registerHandler("register_task", self._on_game_create_new_task)
+	bus.registerHandler("change_plante_state", self.change_plante_state)
+
+func change_plante_state(data):
+	animatedSprite2D.play(str(data.plant_state))
 
 func _on_game_create_new_task(data):
 	var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
@@ -108,8 +112,10 @@ func task_see_more(task_node_instance, task: Task):
 func load_game(data):
 	while game_manager_instance.ready == false:
 		pass
-	print(game_manager_instance.get_tasks())
 	for task in game_manager_instance.get_tasks():
 		var container = $MarginContainer/VBoxContainer/Tasks/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 		container.add_child(create_task_node(task))
-
+	$MarginContainer/VBoxContainer/PlantContainer/Panel/Username.text = game_manager_instance.username
+	change_plante_state({
+		"plant_state": game_manager_instance.plant_state
+	})

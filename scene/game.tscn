@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wqsqmab7belf"]
+[gd_scene load_steps=12 format=3 uid="uid://wqsqmab7belf"]
 
 [ext_resource type="Texture2D" uid="uid://dnfj61gvhwedh" path="res://assets/background/blue.png" id="1_gvq5o"]
 [ext_resource type="Script" path="res://scene/game.gd" id="1_xi2kp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://sv8i1y8bl2eu" path="res://themes/panel/task_panel.tres" id="2_yxfqp"]
 [ext_resource type="PackedScene" uid="uid://d1f3yacjo4bx" path="res://scene/elements/task/task_popup.tscn" id="3_50urs"]
 [ext_resource type="Script" path="res://scene/plant-view.gd" id="3_vrct0"]
+[ext_resource type="Theme" uid="uid://ct6g5q1tj76s0" path="res://themes/elements/username_label.tres" id="5_d4mga"]
 [ext_resource type="Texture2D" uid="uid://f3uaapexhoru" path="res://assets/buttons/icons/Add.png" id="5_xuxn1"]
 [ext_resource type="Theme" uid="uid://plpu3ajx1xsc" path="res://themes/input/text_input.tres" id="6_whpyr"]
 [ext_resource type="Theme" uid="uid://sehh0dw6rdga" path="res://themes/buttons/close_button.tres" id="7_smp66"]
@@ -62,10 +63,21 @@ script = ExtResource("3_vrct0")
 position = Vector2(180, 119)
 scale = Vector2(0.599603, 0.486771)
 sprite_frames = ExtResource("2_bhe3l")
-animation = &"state-1"
-frame = 46
-frame_progress = 0.779865
+animation = &"-2"
 speed_scale = 2.0
+
+[node name="Username" type="Label" parent="MarginContainer/VBoxContainer/PlantContainer/Panel"]
+z_index = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 0
+offset_left = 19.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 33.0
+theme = ExtResource("5_d4mga")
+vertical_alignment = 1
+text_overrun_behavior = 3
+uppercase = true
 
 [node name="Tasks" type="Control" parent="MarginContainer/VBoxContainer"]
 z_index = 2

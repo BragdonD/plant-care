@@ -7,6 +7,7 @@ var tasks_done: Array = []
 var tasks_failed: Array = []
 var path: String = ""
 var ready = false
+var username = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,10 +61,16 @@ func _on_game_task_failed(data):
 func decrease_plant_state():
 	if(plant_state > -2):
 		plant_state -= 1
+	bus.postEvent("change_plante_state", {
+		"plant_state": plant_state
+	})
 
 func increase_plant_state():
 	if(plant_state < 1):
 		plant_state += 1
+	bus.postEvent("change_plante_state", {
+		"plant_state": plant_state
+	})
 
 func load(data):
 	path = data.path
@@ -110,6 +117,7 @@ func load(data):
 			tasks_failed.append(task)
 		
 		plant_state = game_data["plant_state"]
+		username = game_data["username"]
 
 		file.close()
 		print("Game data loaded successfully.")
