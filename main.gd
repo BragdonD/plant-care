@@ -13,3 +13,4 @@ func _play_game():
 	$Game.visible = true
 	$VBoxContainer/TextureRect.visible = false
 	$VBoxContainer.visible = false
+	$Game/AudioStreamPlayer2D.play()
